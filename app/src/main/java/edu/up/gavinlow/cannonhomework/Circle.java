@@ -29,6 +29,11 @@ public abstract class Circle
     {
         canvas.drawCircle(x,y,radius, paint);
     }
+    public void drawOtherTarget(Canvas canvas)
+    {
+        canvas.drawCircle(x,y,radius, paint);
+    }
+
 
     public boolean circleOverlap(Circle otherCircle)
     {
