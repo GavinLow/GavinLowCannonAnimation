@@ -9,13 +9,24 @@ import android.graphics.Color;
 
 public class CannonBall extends Circle
 {
+    //sets the radius of the cannon ball
     private static final int radius = 50;
 
+    //instance variables for the cannon ball
     private int vx;
     private int vy;
     private int ax;
     private int ay;
 
+    /**
+     * Constructor for the cannonball
+     * @param initX
+     * @param initY
+     * @param initVx
+     * @param initVy
+     * @param initAx
+     * @param initAy
+     */
     public CannonBall(int initX, int initY, int initVx, int initVy, int initAx, int initAy)
     {
         super(initX, initY, radius, Color.BLACK);
@@ -26,18 +37,31 @@ public class CannonBall extends Circle
         this.ay = initAy;
     }
 
+    /**
+     * updates the position of the cannonball
+     */
     public void updatePos()
     {
         x = x + vx;
         y = y + vy;
     }
 
+    /**
+     * adds the acceleration to the ball
+     */
     public void accelerateBall()
     {
         vx = vx + ax;
         vy = vy + ay;
     }
 
+    /**
+     * Checks to see if the cannonball has collided with anything
+     * @param leftBound
+     * @param rightBound
+     * @param topBound
+     * @param bottomBound
+     */
     public void checkCollision(int leftBound, int rightBound, int topBound, int bottomBound)
     {
         int left = x - radius;
@@ -45,6 +69,7 @@ public class CannonBall extends Circle
         int top = y - radius;
         int bottom = y + radius;
 
+        //inverts the velocity if it touches a screen boundary
         if((left < leftBound))
         {
             vx = -1*vx;
@@ -62,8 +87,13 @@ public class CannonBall extends Circle
             vy = -1*vy;
         }
     }
-        public void drawMe(Canvas canvas)
-        {
-            canvas.drawCircle(x,y,radius, paint);
-        }
+
+    /**
+     * Draws the cannonball on the canvas
+     * @param canvas
+     */
+    public void drawMe(Canvas canvas)
+    {
+        canvas.drawCircle(x,y,radius, paint);
+    }
 }

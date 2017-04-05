@@ -5,10 +5,13 @@ import android.graphics.Paint;
 
 /**
  * Created by gavinlow on 4/2/17.
+ * @author gavinlow
+ * @date 4/4/17
  */
 
 public abstract class Circle
 {
+    //Instance Variables
     protected Paint paint = new Paint();
     protected int color;
     protected int radius;
@@ -16,6 +19,13 @@ public abstract class Circle
     protected int x;
     protected int y;
 
+    /**
+     * Constructor for a circle
+     * @param initX
+     * @param initY
+     * @param radius
+     * @param color
+     */
     public Circle(int initX, int initY, int radius, int color)
     {
         this.x = initX;
@@ -25,16 +35,20 @@ public abstract class Circle
         paint.setColor(color);
     }
 
+    /**
+     * draws target on the canvas
+     * @param canvas
+     */
     public void drawMe(Canvas canvas)
     {
         canvas.drawCircle(x,y,radius, paint);
     }
-    public void drawOtherTarget(Canvas canvas)
-    {
-        canvas.drawCircle(x,y,radius, paint);
-    }
 
-
+    /**
+     * checks to see if circles overlap
+     * @param otherCircle
+     * @return
+     */
     public boolean circleOverlap(Circle otherCircle)
     {
         int x1 = x;
@@ -46,16 +60,28 @@ public abstract class Circle
         return (distance < (radius + otherCircle.getRadius()));
     }
 
+    /**
+     * returns the xpos of the circle
+     * @return
+     */
     public int getX()
     {
         return this.x;
     }
 
+    /**
+     * returns the ypos of the circle
+     * @return
+     */
     public int getY()
     {
         return this.y;
     }
 
+    /**
+     * returns the radius of the circle
+     * @return
+     */
     public int getRadius()
     {
         return  this.radius;
